@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Button, Form, TextArea } from 'semantic-ui-react';
 import gql from 'graphql-tag';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export default function CreatePost() {
   const initInput = {
@@ -23,6 +25,7 @@ export default function CreatePost() {
   const [createPost] = useMutation(CREATE_POST_MUTATION, {
     update(_, result) {
       setSuccess(true)
+      setValues(initInput)
     },
     onError(err) {
       console.log(JSON.stringify(err, null, 2))
@@ -42,12 +45,13 @@ export default function CreatePost() {
           value={values.title}
           onChange={handleChange}
         />
-        <TextArea
-          placeholder='Write something here'
-          type='text'
-          name='content'
-          value={values.content}
-          onChange={handleChange}
+        <CKEditor
+          editor={ClassicEditor}
+          data={values.content}
+          onChange={(event, editor) => {
+            const data = editor.getData()
+            setValues({ ...values, content: data })
+          }}
         />
         <Button type='submit' primary>
           Submit
@@ -57,7 +61,7 @@ export default function CreatePost() {
         success ?
           <p>
             Successfully created a post!
-        </p>
+          </p>
           :
           <div></div>
       }

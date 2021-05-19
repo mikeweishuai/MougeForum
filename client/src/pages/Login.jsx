@@ -34,8 +34,8 @@ export default function Login(props) {
       props.history.push('/');
     },
     onError(err) {
-      console.log(err)
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      // console.log(errors);
     },
     variables: values
   });
@@ -56,7 +56,7 @@ export default function Login(props) {
             name='username'
             type='text'
             value={values.username}
-            error={errors.username}
+            error={errors.general}
             onChange={handleChange}
           />
           <Form.Input
@@ -65,7 +65,7 @@ export default function Login(props) {
             name='password'
             type='password'
             value={values.password}
-            error={errors.password}
+            error={errors.general}
             onChange={handleChange}
           />
           <Button type='submit' primary>

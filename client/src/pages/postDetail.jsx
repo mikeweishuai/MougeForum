@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router';
 import { Button, Comment, Form } from 'semantic-ui-react'
+import parse from 'html-react-parser';
 
 import PostComment from '../components/post/postComment';
 import { AuthContext } from '../context/auth'
@@ -74,9 +75,9 @@ export default function PostDetail() {
           <p>
             {postData.getPost.author}
           </p>
-          <p>
-            {postData.getPost.content}
-          </p>
+          <div>
+            {parse(postData.getPost.content)}
+          </div>
           <p>
             {postData.getPost.createdAt}
           </p>
