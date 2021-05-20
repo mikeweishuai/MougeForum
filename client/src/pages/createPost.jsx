@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { Button, Form, TextArea } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -35,36 +35,48 @@ export default function CreatePost() {
   })
 
   return (
-    <div>
-      <Form onSubmit={handleSubmit}>
-        <Form.Input
-          label='Title'
-          placeholder='title'
-          name='title'
-          type='text'
-          value={values.title}
-          onChange={handleChange}
-        />
-        <CKEditor
-          editor={ClassicEditor}
-          data={values.content}
-          onChange={(event, editor) => {
-            const data = editor.getData()
-            setValues({ ...values, content: data })
-          }}
-        />
-        <Button type='submit' primary>
-          Submit
-        </Button>
-      </Form>
-      {
-        success ?
-          <p>
-            Successfully created a post!
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center'
+    }}>
+      <div className='component-card'>
+        <Form onSubmit={handleSubmit}>
+          <Form.Input
+            label='Title'
+            placeholder='title'
+            name='title'
+            type='text'
+            value={values.title}
+            onChange={handleChange}
+          />
+          <div
+            style={{
+              marginBottom: 20
+            }}
+          >
+            <CKEditor
+              editor={ClassicEditor}
+              data={values.content}
+              onChange={(event, editor) => {
+                const data = editor.getData()
+                setValues({ ...values, content: data })
+              }}
+            />
+          </div>
+
+          <Button type='submit' primary>
+            Submit
+          </Button>
+        </Form>
+        {
+          success ?
+            <p>
+              Successfully created a post!
           </p>
-          :
-          <div></div>
-      }
+            :
+            <div></div>
+        }
+      </div>
     </div>
   )
 }

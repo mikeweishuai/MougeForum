@@ -18,7 +18,6 @@ export default function UserProfile() {
       </div>
     )
   } else {
-    console.log(data)
     profile = data.getUserInfo
   }
 

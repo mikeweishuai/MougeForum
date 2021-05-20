@@ -41,6 +41,7 @@ export default function PublicProfile() {
               objectFit: 'cover',
               borderRadius: '50%'
             }}
+            alt={"alt"}
           />
         </div>
 

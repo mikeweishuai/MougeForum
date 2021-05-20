@@ -8,3 +8,7 @@
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.19);
   padding: 20px;
 }
+
+.ck-editor__editable_inline {
+  min-height: 300px;
+}

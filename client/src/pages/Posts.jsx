@@ -9,7 +9,7 @@ import '../App.css';
 export default function Posts() {
   // Variables for pagination
   const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 3
+  const postsPerPage = 6
 
   // Query from databse
   const { loading, data } = useQuery(FETCH_ALL_POSTS, {
