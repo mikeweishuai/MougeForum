@@ -29,12 +29,33 @@ module.exports = gql`
 		confirmPassword: String!
 		email: String!
 	}
+	"""
+	Simple wrapper around our list of launches that contains a cursor to the
+	last item in the list. Pass this cursor to the launches query to fetch results
+	after these.
+	"""
+	type PostConnection { # add this below the Query type as an additional type.
+		cursor: String!
+		hasMore: Boolean!
+		posts: [Post]!
+	}
 	type Query{
 		getUserInfo: User!
 		countUsers: Int!
 		getUsers: [User]
 		getUserByName(username: String!): User!
 		getPosts: [Post]
+		getPostsPage(pageSize: Int!, pageNum: Int!): [Post]
+		# posts( # replace the current launches query with this one.
+		# 	"""
+		# 	The number of results to show. Must be >= 1. Default = 20
+		# 	"""
+		# 	pageSize: Int
+		# 	"""
+		# 	If you add a cursor here, it will only return results _after_ this cursor
+		# 	"""
+		# 	after: String
+		# ): PostConnection!
 		getPost(postId: String): Post
 		getCommentsByPost(postId: ID): [Comment]
 	}
