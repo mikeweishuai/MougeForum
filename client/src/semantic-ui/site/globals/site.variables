@@ -1,5 +1,5 @@
 /*******************************
      User Global Variables
 *******************************/
-@primaryColor: antiquewhite;
+@primaryColor: #FFB6C1;
 @pageBackground: antiquewhite;
