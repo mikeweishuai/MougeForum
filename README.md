@@ -1,5 +1,8 @@
 # Mouge Forum  
 
+## Prerequisite
+- Node.js
+
 ## Description
 A light weight forum. Just for fun!  
 
