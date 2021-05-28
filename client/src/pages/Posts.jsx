@@ -1,20 +1,25 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import React, { useState } from 'react';
+import React from 'react';
+import { useParams } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { Pagination } from 'semantic-ui-react'
 
 import PostPreview from '../components/post/postPreview';
 import '../App.css';
 
 export default function Posts() {
-  // Variables for pagination
-  const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 6
+  const { pageNum } = useParams();
+  const history = useHistory();
 
   // Query from databse
-  const { loading, data } = useQuery(FETCH_ALL_POSTS, {
+  const { loading, data } = useQuery(FETCH_POST_PAGE, {
     onError(err) {
       console.log(JSON.stringify(err, null, 2))
+    },
+    variables: {
+      pageSize: 5,
+      pageNum: parseInt(pageNum)
     }
   });
 
@@ -27,18 +32,13 @@ export default function Posts() {
   }
 
   // Extract posts from data
-  let myPosts = { data: data.getPosts }.data
+  let myPosts = data.getPostsPage.posts
   const postComponents = myPosts.map(post => {
     return <PostPreview data={post} />
   })
 
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = postComponents.slice(indexOfFirstPost, indexOfLastPost);
-
   // Change page
-  const paginate = (e, pageInfo) => setCurrentPage(pageInfo.activePage)
+  const handleChange = (e, pageInfo) => history.push(`/posts/${pageInfo.activePage}`)
 
   return (
     <div style={{
@@ -46,26 +46,29 @@ export default function Posts() {
       justifyContent: 'center'
     }}>
       <div>
-        {currentPosts}
+        {postComponents}
         <Pagination
-          activePage={currentPage}
-          onPageChange={paginate}
-          totalPages={Math.ceil(myPosts.length / postsPerPage)}
+          activePage={parseInt(pageNum)}
+          onPageChange={handleChange}
+          totalPages={data.getPostsPage.totalPages}
         />
       </div>
     </div>
-
   )
 }
 
-const FETCH_ALL_POSTS = gql`
-  {
-    getPosts {
-      id
-      title
-      author
-      content
-      createdAt
+const FETCH_POST_PAGE = gql`
+  query getPostsPage($pageSize: Int!, $pageNum: Int!) {
+    getPostsPage(pageSize: $pageSize, pageNum: $pageNum) {
+      totalPages
+      currentPage
+      posts {
+        id
+        title
+        author
+        content
+        createdAt
+      }
     }
   }
 `

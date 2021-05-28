@@ -19,9 +19,7 @@ import PublicProfile from './pages/PublicProfile';
 function App() {
   return (
     <AuthProvider>
-      <Router style={{
-        backgroundColor: 'green'
-      }}>
+      <Router>
         <MenuBar />
         <Route exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
@@ -32,6 +30,7 @@ function App() {
 
         <Route path='/post/:id' children={<PostDetail />} />
         <Route path='/profile/:username' children={<PublicProfile />} />
+        <Route path='/posts/:pageNum' children={<Posts />} />
       </Router>
     </AuthProvider>
   );

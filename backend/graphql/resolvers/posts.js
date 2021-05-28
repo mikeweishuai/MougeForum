@@ -24,7 +24,9 @@ module.exports = {
                 if (err) {
                     throw new Error(err);
                 }
-                res = result.docs;
+                res['posts'] = result.docs;
+                res['totalPages'] = result.totalPages;
+                res['currentPage'] = result.page;
             })
             return res;
         },

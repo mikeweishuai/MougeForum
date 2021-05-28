@@ -35,8 +35,8 @@ module.exports = gql`
 	after these.
 	"""
 	type PostConnection { # add this below the Query type as an additional type.
-		cursor: String!
-		hasMore: Boolean!
+		totalPages: Int!
+		currentPage: Int!
 		posts: [Post]!
 	}
 	type Query{
@@ -45,7 +45,7 @@ module.exports = gql`
 		getUsers: [User]
 		getUserByName(username: String!): User!
 		getPosts: [Post]
-		getPostsPage(pageSize: Int!, pageNum: Int!): [Post]
+		getPostsPage(pageSize: Int!, pageNum: Int!): PostConnection
 		getPost(postId: String): Post
 		getCommentsByPost(postId: ID): [Comment]
 	}
