@@ -9,20 +9,7 @@ import {
 export default function Drawer(props) {
   const [visible, setVisible] = useState(false);
 
-  const items = props.itemsName.map((name) => {
-    return (
-      <Menu.Item
-        key={name}
-        name={name}
-      // onClick={handleItemClick}
-      // active={activeItem === name}
-      >
-        {name}
-      </Menu.Item>
-    )
-  });
-
-  return (
+  const ret = (
     <div>
       <Menu style={{
         margin: 5
@@ -44,8 +31,10 @@ export default function Drawer(props) {
         visible={visible}
         width='thin'
       >
-        {items}
+        {props.items}
       </Sidebar>
     </div>
   )
+
+  return ret;
 }
