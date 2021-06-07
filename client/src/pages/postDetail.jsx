@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import React, { useState, useContext } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router';
-import { Button, Comment, Form } from 'semantic-ui-react'
+import { Button, Comment, Form, Container } from 'semantic-ui-react'
 import parse from 'html-react-parser';
 
 import PostComment from '../components/post/postComment';
@@ -66,49 +66,51 @@ export default function PostDetail() {
       display: 'flex',
       justifyContent: 'center'
     }}>
-      <div style={{
-      }}>
-        <div className='component-card'>
-          <h2>
-            {postData.getPost.title}
-          </h2>
-          <p>
-            {postData.getPost.author}
-          </p>
-          <div>
-            {parse(postData.getPost.content)}
+      <Container>
+        <div style={{
+        }}>
+          <div className='component-card'>
+            <h2>
+              {postData.getPost.title}
+            </h2>
+            <p>
+              {postData.getPost.author}
+            </p>
+            <div>
+              {parse(postData.getPost.content)}
+            </div>
+            <p>
+              {postData.getPost.createdAt}
+            </p>
           </div>
-          <p>
-            {postData.getPost.createdAt}
-          </p>
+          <div
+            className='component-card'
+            style={{
+              marginTop: 20
+            }}>
+            <h3>
+              Comments
+            </h3>
+            <Comment.Group>
+              {commentComponents}
+              {context.user ?
+                <Form reply onSubmit={handleSubmit}>
+                  <Form.TextArea
+                    placeholder='Write something here'
+                    type='text'
+                    name='content'
+                    value={values.content}
+                    onChange={handleChange}
+                  />
+                  <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+                </Form> :
+                <div />
+              }
+            </Comment.Group>
+            {success ? <p>Success! Refresh the page to see the update</p> : <div></div>}
+          </div>
         </div>
-        <div
-          className='component-card'
-          style={{
-            marginTop: 20
-          }}>
-          <h3>
-            Comments
-          </h3>
-          <Comment.Group>
-            {commentComponents}
-            {context.user ?
-              <Form reply onSubmit={handleSubmit}>
-                <Form.TextArea
-                  placeholder='Write something here'
-                  type='text'
-                  name='content'
-                  value={values.content}
-                  onChange={handleChange}
-                />
-                <Button content='Add Reply' labelPosition='left' icon='edit' primary />
-              </Form> :
-              <div />
-            }
-          </Comment.Group>
-          {success ? <p>Success! Refresh the page to see the update</p> : <div></div>}
-        </div>
-      </div>
+      </Container>
     </div>
   )
 }
