@@ -67,48 +67,45 @@ export default function PostDetail() {
       justifyContent: 'center'
     }}>
       <Container>
-        <div style={{
-        }}>
-          <div className='component-card'>
-            <h2>
-              {postData.getPost.title}
-            </h2>
-            <p>
-              {postData.getPost.author}
-            </p>
-            <div>
-              {parse(postData.getPost.content)}
-            </div>
-            <p>
-              {postData.getPost.createdAt}
-            </p>
+        <div className='component-card'>
+          <h2>
+            {postData.getPost.title}
+          </h2>
+          <p>
+            {postData.getPost.author}
+          </p>
+          <div>
+            {parse(postData.getPost.content)}
           </div>
-          <div
-            className='component-card'
-            style={{
-              marginTop: 20
-            }}>
-            <h3>
-              Comments
+          <p>
+            {postData.getPost.createdAt}
+          </p>
+        </div>
+        <div
+          className='component-card'
+          style={{
+            marginTop: 20
+          }}>
+          <h3>
+            Comments
             </h3>
-            <Comment.Group>
-              {commentComponents}
-              {context.user ?
-                <Form reply onSubmit={handleSubmit}>
-                  <Form.TextArea
-                    placeholder='Write something here'
-                    type='text'
-                    name='content'
-                    value={values.content}
-                    onChange={handleChange}
-                  />
-                  <Button content='Add Reply' labelPosition='left' icon='edit' primary />
-                </Form> :
-                <div />
-              }
-            </Comment.Group>
-            {success ? <p>Success! Refresh the page to see the update</p> : <div></div>}
-          </div>
+          <Comment.Group>
+            {commentComponents}
+            {context.user ?
+              <Form reply onSubmit={handleSubmit}>
+                <Form.TextArea
+                  placeholder='Write something here'
+                  type='text'
+                  name='content'
+                  value={values.content}
+                  onChange={handleChange}
+                />
+                <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+              </Form> :
+              <div />
+            }
+          </Comment.Group>
+          {success ? <p>Success! Refresh the page to see the update</p> : <div></div>}
         </div>
       </Container>
     </div>
