@@ -11,14 +11,14 @@ export default function Drawer(props) {
 
   const ret = (
     <div>
-      <Menu style={{
+      <Menu borderless={true} style={{
         margin: 5
       }}>
         <Menu.Item
           as='a'
           onClick={() => setVisible(true)}
+          icon='bars'
         >
-          click
         </Menu.Item>
       </Menu>
       <Sidebar

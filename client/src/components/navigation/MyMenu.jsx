@@ -4,7 +4,7 @@ import { Menu } from 'semantic-ui-react';
 export default function MyMenu(props) {
 
   return (
-    <Menu style={{
+    <Menu borderless={true} style={{
       margin: 5
     }}>
       {props.items}
