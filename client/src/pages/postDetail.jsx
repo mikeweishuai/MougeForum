@@ -64,7 +64,7 @@ export default function PostDetail() {
   return (
     <div style={{
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}>
       <Container>
         <div className='component-card'>
@@ -74,7 +74,7 @@ export default function PostDetail() {
           <p>
             {postData.getPost.author}
           </p>
-          <div>
+          <div className='line-break'>
             {parse(postData.getPost.content)}
           </div>
           <p>

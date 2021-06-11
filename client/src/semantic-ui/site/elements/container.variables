@@ -1,3 +1,5 @@
 /*******************************
     User Variable Overrides
 *******************************/
+@mobileWidth: 100%;
+@maxWidth: 100%;

@@ -6,6 +6,13 @@
   background-color: #fef9f3;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.19);
   padding: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.line-break {
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 .ck-editor__editable_inline {
