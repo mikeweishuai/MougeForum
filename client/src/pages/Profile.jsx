@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import ProfileBar from '../components/profileBar'
+import ProfileBar from '../components/ProfileBar'
 import { AuthContext } from '../context/auth'
 
 export default function Profile() {

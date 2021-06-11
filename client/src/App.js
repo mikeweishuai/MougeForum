@@ -9,11 +9,11 @@ import { AuthProvider } from './context/auth';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import MenuBar from './components/menuBar'
+import MenuBar from './components/MenuBar'
 import Profile from './pages/Profile';
 import Posts from './pages/Posts';
-import PostDetail from './pages/postDetail';
-import CreatePost from './pages/createPost';
+import PostDetail from './pages/PostDetail';
+import CreatePost from './pages/CreatePost';
 import PublicProfile from './pages/PublicProfile';
 
 function App() {
@@ -21,6 +21,9 @@ function App() {
     <AuthProvider>
       <Router>
         <MenuBar />
+        <div style={{
+          height: 45
+        }}></div>
         <Route exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />

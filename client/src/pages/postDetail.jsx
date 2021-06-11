@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import { Button, Comment, Form, Container } from 'semantic-ui-react'
 import parse from 'html-react-parser';
 
-import PostComment from '../components/post/postComment';
+import PostComment from '../components/post/PostComment';
 import { AuthContext } from '../context/auth'
 import '../App.css'
 
@@ -64,7 +64,7 @@ export default function PostDetail() {
   return (
     <div style={{
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}>
       <Container>
         <div className='component-card'>
@@ -74,7 +74,7 @@ export default function PostDetail() {
           <p>
             {postData.getPost.author}
           </p>
-          <div>
+          <div className='line-break'>
             {parse(postData.getPost.content)}
           </div>
           <p>

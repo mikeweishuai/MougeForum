@@ -94,5 +94,11 @@ export default function MenuBar() {
     </>
   )
 
-  return width > 600 ? <MyMenu items={items} /> : <Drawer items={items} />;
+  return (
+    <div style={{
+      marginBottom: 15
+    }}>
+      {width > 600 ? <MyMenu items={items} /> : <Drawer items={items} />}
+    </div>
+  );
 }
