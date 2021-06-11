@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
-import UpdateBio from './profile/updateBio';
-import UpdateEmail from './profile/updateEmail';
-import UserProfile from './profile/userProfile';
+import UpdateBio from './profile/UpdateBio';
+import UpdateEmail from './profile/UpdateEmail';
+import UserProfile from './profile/UserProfile';
 
 export default function ProfileBar() {
   const [activeItem, setActiveItem] = useState('profile')

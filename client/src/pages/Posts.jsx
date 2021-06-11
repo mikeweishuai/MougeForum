@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import { Pagination } from 'semantic-ui-react'
 
-import PostPreview from '../components/post/postPreview';
+import PostPreview from '../components/post/PostPreview';
 import '../App.css';
 
 export default function Posts() {
@@ -43,7 +43,7 @@ export default function Posts() {
   return (
     <div style={{
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}>
       <div>
         {postComponents}

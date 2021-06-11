@@ -11,9 +11,7 @@ export default function Drawer(props) {
 
   const ret = (
     <div>
-      <Menu borderless={true} style={{
-        margin: 5
-      }}>
+      <Menu fixed={'top'} borderless={true}>
         <Menu.Item
           as='a'
           onClick={() => setVisible(true)}
@@ -30,6 +28,7 @@ export default function Drawer(props) {
         vertical
         visible={visible}
         width='thin'
+        borderless={true}
       >
         {props.items}
       </Sidebar>

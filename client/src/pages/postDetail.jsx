@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import { Button, Comment, Form, Container } from 'semantic-ui-react'
 import parse from 'html-react-parser';
 
-import PostComment from '../components/post/postComment';
+import PostComment from '../components/post/PostComment';
 import { AuthContext } from '../context/auth'
 import '../App.css'
 
