@@ -67,6 +67,7 @@ const FETCH_POST_PAGE = gql`
         title
         author
         content
+        commentsCount
         createdAt
       }
     }
