@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Checkbox,
-  Icon,
   Menu,
   Sidebar,
 } from 'semantic-ui-react';
