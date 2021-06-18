@@ -6,6 +6,7 @@ const postSchema = new Schema({
     title: String,
     content: String,
     createdAt: String,
+    commentsCount: Number,
 })
 
 postSchema.plugin(mongoosePaginate);

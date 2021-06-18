@@ -15,14 +15,18 @@ module.exports = {
     },
     Mutation: {
         async createComment(_, { parent, content }, context) {
-            // const id = mongoose.Types.ObjectId(parent)
+            // Find the parent post
             const post = await Post.findById(parent);
             if (!post) {
                 throw new Error('Parent post not found')
             }
+            // Update the comments count of the parent post
+            const count = post.commentsCount + 1;
+            post.commentsCount = count;
+            await post.save();
 
             const user = checkAuth(context);
-            const author = user.username
+            const author = user.username;
             const newComment = new Comment({
                 author,
                 parent,
