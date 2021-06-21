@@ -1,8 +1,10 @@
 import React from 'react';
-import { Comment } from 'semantic-ui-react'
+import { Comment } from 'semantic-ui-react';
+import { DateTime } from 'luxon';
 
 export default function PostComment(props) {
-  const { author, createdAt, content } = props.data
+  const { author, createdAt, content } = props.data;
+  const date = DateTime.fromISO(createdAt);
 
   return (
     <Comment>
@@ -15,7 +17,7 @@ export default function PostComment(props) {
           href={'/profile/' + author}
         >{author}</Comment.Author>
         <Comment.Metadata>
-          <div>{createdAt}</div>
+          <div>{date.toRelative()}</div>
         </Comment.Metadata>
         <Comment.Text>{content}</Comment.Text>
       </Comment.Content>

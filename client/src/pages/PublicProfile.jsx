@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import React from 'react'
 import { useParams } from 'react-router';
+import { DateTime } from 'luxon';
 
 export default function PublicProfile() {
   const { username } = useParams();
@@ -18,6 +19,8 @@ export default function PublicProfile() {
       <div> loading... </div>
     )
   }
+
+  const date = DateTime.fromISO(data.getUserByName.createdAt);
 
   return (
     <div style={{
@@ -58,7 +61,7 @@ export default function PublicProfile() {
           <h3>Email</h3>
           <p>{data.getUserByName.email}</p>
           <h3>Register time</h3>
-          <p>{data.getUserByName.createdAt}</p>
+          <p>{date.toFormat('LLL, dd, yyyy')}</p>
         </div>
       </div>
 

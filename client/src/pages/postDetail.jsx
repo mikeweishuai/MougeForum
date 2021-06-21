@@ -4,6 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router';
 import { Button, Comment, Form, Container } from 'semantic-ui-react'
 import parse from 'html-react-parser';
+import { DateTime } from "luxon";
 
 import PostComment from '../components/post/PostComment';
 import { AuthContext } from '../context/auth'
@@ -61,6 +62,9 @@ export default function PostDetail() {
     return <PostComment data={comment} />
   })
 
+  // Convert to luxon datetime for utilizing toRelative()
+  const date = DateTime.fromISO(postData.getPost.createdAt);
+
   return (
     <div style={{
       display: 'flex',
@@ -77,8 +81,12 @@ export default function PostDetail() {
           <div className='line-break'>
             {parse(postData.getPost.content)}
           </div>
-          <p>
-            {postData.getPost.createdAt}
+          <p style={{
+            textAlign: 'right',
+            marginTop: 10,
+            color: 'grey'
+          }}>
+            {'Created at: ' + date.toFormat('LLL, dd, yyyy, HH:mm:ss')}
           </p>
         </div>
         <div
@@ -88,7 +96,7 @@ export default function PostDetail() {
           }}>
           <h3>
             Comments
-            </h3>
+          </h3>
           <Comment.Group>
             {commentComponents}
             {context.user ?

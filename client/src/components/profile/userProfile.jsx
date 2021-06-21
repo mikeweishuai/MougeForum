@@ -1,6 +1,7 @@
 import React from 'react'
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
+import { DateTime } from "luxon";
 
 export default function UserProfile() {
   let profile = {}
@@ -20,6 +21,8 @@ export default function UserProfile() {
   } else {
     profile = data.getUserInfo
   }
+
+  const date = DateTime.fromISO(profile.createdAt);
 
   return (
     <div>
@@ -45,7 +48,7 @@ export default function UserProfile() {
         Created at:
       </h3>
       <p>
-        {profile.createdAt}
+        {date.toFormat('LLL, dd, yyyy')}
       </p>
     </div>
   )
