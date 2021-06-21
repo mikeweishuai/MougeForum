@@ -5,6 +5,7 @@ const commentSchema = new Schema({
     parent: String,
     content: String,
     createdAt: String,
+    floor: Number,
 })
 
 module.exports = model("Comment", commentSchema);

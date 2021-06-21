@@ -7,6 +7,9 @@ const postSchema = new Schema({
     content: String,
     createdAt: String,
     commentsCount: Number,
+    // the index of next comment created under this post
+    // (or the number of all comments that includes deleted + 1).
+    newCommentIndex: Number,
 })
 
 postSchema.plugin(mongoosePaginate);

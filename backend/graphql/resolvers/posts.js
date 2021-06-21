@@ -45,13 +45,15 @@ module.exports = {
     },
     Mutation: {
         async createPost(_, { title, content }, context) {
-            const user = checkAuth(context);
-            const author = user.username
+            // const user = checkAuth(context);
+            // const author = user.username;
+            const author = 'test';
             const newPost = new Post({
                 author,
                 title,
                 content,
                 commentsCount: 0,
+                newCommentIndex: 1,
                 createdAt: new Date().toISOString()
             });
             const post = await newPost.save();

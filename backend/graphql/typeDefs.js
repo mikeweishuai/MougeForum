@@ -15,7 +15,8 @@ module.exports = gql`
 		author: String!
 		content: String!
 		createdAt: String!
-		commentsCount: Int
+		commentsCount: Int!
+		newCommentIndex: Int!
 	}
 	type Comment {
 		id: ID!
@@ -23,6 +24,7 @@ module.exports = gql`
 		author: String!
 		content: String!
 		createdAt: String!
+		floor: Int!
 	}
 	input RegisterInput{
 		username: String!

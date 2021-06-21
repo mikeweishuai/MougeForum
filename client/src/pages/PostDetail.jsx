@@ -139,6 +139,7 @@ const FETCH_COMMENTS_BY_POST = gql`
       parent
       content
       author
+      floor
       createdAt
     }
   }

@@ -23,14 +23,18 @@ module.exports = {
             // Update the comments count of the parent post
             const count = post.commentsCount + 1;
             post.commentsCount = count;
+            const currentFloor = post.newCommentIndex;
+            post.newCommentIndex = currentFloor + 1;
             await post.save();
 
-            const user = checkAuth(context);
-            const author = user.username;
+            // const user = checkAuth(context);
+            // const author = user.username;
+            const author = 'test';
             const newComment = new Comment({
                 author,
                 parent,
                 content,
+                floor: currentFloor,
                 createdAt: new Date().toISOString()
             });
 
