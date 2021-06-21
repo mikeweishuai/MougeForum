@@ -27,9 +27,9 @@ module.exports = {
             post.newCommentIndex = currentFloor + 1;
             await post.save();
 
-            // const user = checkAuth(context);
-            // const author = user.username;
-            const author = 'test';
+            const user = checkAuth(context);
+            const author = user.username;
+            // const author = 'test';
             const newComment = new Comment({
                 author,
                 parent,

@@ -45,9 +45,9 @@ module.exports = {
     },
     Mutation: {
         async createPost(_, { title, content }, context) {
-            // const user = checkAuth(context);
-            // const author = user.username;
-            const author = 'test';
+            const user = checkAuth(context);
+            const author = user.username;
+            // const author = 'test';
             const newPost = new Post({
                 author,
                 title,
