@@ -20,11 +20,12 @@ module.exports = {
             if (!post) {
                 throw new Error('Parent post not found')
             }
-            // Update the comments count of the parent post
+            // Update the fields of the parent post
             const count = post.commentsCount + 1;
             post.commentsCount = count;
             const currentFloor = post.newCommentIndex;
             post.newCommentIndex = currentFloor + 1;
+            post.updatedAt = new Date().toISOString();
             await post.save();
 
             const user = checkAuth(context);

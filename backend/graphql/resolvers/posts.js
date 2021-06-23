@@ -17,7 +17,7 @@ module.exports = {
             const options = {
                 page: pageNum,
                 limit: pageSize,
-                sort: '-createdAt'
+                sort: '-updatedAt'
             }
             let res = {}
             await Post.paginate({}, options, function (err, result) {
@@ -54,7 +54,8 @@ module.exports = {
                 content,
                 commentsCount: 0,
                 newCommentIndex: 1,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
             });
             const post = await newPost.save();
             return post;

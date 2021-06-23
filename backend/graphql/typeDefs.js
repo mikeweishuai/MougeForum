@@ -15,6 +15,7 @@ module.exports = gql`
 		author: String!
 		content: String!
 		createdAt: String!
+		updatedAt: String!
 		commentsCount: Int!
 		newCommentIndex: Int!
 	}
