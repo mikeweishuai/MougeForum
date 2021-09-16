@@ -1,10 +1,12 @@
 # Mouge Forum  
 
+https://mougeforum.netlify.app/
+
 ## Prerequisite
 - Node.js
 
 ## Description
-A light weight forum. Just for fun!  
+A light weight forum for people to share their thoughts and interact with others.
 
 ## Usage
 - In the client folder, run `npm install`
